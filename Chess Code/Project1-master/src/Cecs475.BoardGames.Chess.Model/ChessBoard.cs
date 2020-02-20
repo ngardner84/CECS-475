@@ -112,8 +112,17 @@ namespace Cecs475.BoardGames.Chess.Model {
 		public ChessPiece GetPieceAtPosition(BoardPosition position) {
             //BoardPosition has row and column
             //Need to use this to get an index in the byte array
-            
-			throw new NotImplementedException("You must implement this method.");
+            int indexNum = ((((position.Col - 1) * 4) + ((position.Row - 1) * 32)) / 4);
+            //Check if position is on left or right side of byte
+            if (position.Col % 2 == 1)
+            {
+                //if position is on the left side of the byte
+
+            }
+            else
+            {
+                //position is on right side of byte
+            }
 		}
 
 		/// <summary>

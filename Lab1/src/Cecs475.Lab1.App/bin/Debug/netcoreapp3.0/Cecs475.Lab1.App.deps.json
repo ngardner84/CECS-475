@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "Cecs475.Lab1.App/1.0.0": {
+        "runtime": {
+          "Cecs475.Lab1.App.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cecs475.Lab1.App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

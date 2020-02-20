@@ -1,0 +1,11 @@
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\bin\Debug\netcoreapp3.0\Cecs475.Lab1.App.exe
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\bin\Debug\netcoreapp3.0\Cecs475.Lab1.App.deps.json
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\bin\Debug\netcoreapp3.0\Cecs475.Lab1.App.runtimeconfig.json
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\bin\Debug\netcoreapp3.0\Cecs475.Lab1.App.runtimeconfig.dev.json
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\bin\Debug\netcoreapp3.0\Cecs475.Lab1.App.dll
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\bin\Debug\netcoreapp3.0\Cecs475.Lab1.App.pdb
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\obj\Debug\netcoreapp3.0\Cecs475.Lab1.App.csprojAssemblyReference.cache
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\obj\Debug\netcoreapp3.0\Cecs475.Lab1.App.AssemblyInfoInputs.cache
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\obj\Debug\netcoreapp3.0\Cecs475.Lab1.App.AssemblyInfo.cs
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\obj\Debug\netcoreapp3.0\Cecs475.Lab1.App.dll
+C:\Users\bryts\Desktop\CECS 475 Projects\Lab1\src\Cecs475.Lab1.App\obj\Debug\netcoreapp3.0\Cecs475.Lab1.App.pdb

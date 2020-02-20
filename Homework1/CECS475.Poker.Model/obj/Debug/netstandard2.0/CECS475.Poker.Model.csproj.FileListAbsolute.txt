@@ -1,0 +1,8 @@
+C:\Users\bryts\Desktop\CECS 475 Projects\Homework1\CECS475.Poker.Model\bin\Debug\netstandard2.0\CECS475.Poker.Model.deps.json
+C:\Users\bryts\Desktop\CECS 475 Projects\Homework1\CECS475.Poker.Model\bin\Debug\netstandard2.0\CECS475.Poker.Model.dll
+C:\Users\bryts\Desktop\CECS 475 Projects\Homework1\CECS475.Poker.Model\bin\Debug\netstandard2.0\CECS475.Poker.Model.pdb
+C:\Users\bryts\Desktop\CECS 475 Projects\Homework1\CECS475.Poker.Model\obj\Debug\netstandard2.0\CECS475.Poker.Model.AssemblyInfoInputs.cache
+C:\Users\bryts\Desktop\CECS 475 Projects\Homework1\CECS475.Poker.Model\obj\Debug\netstandard2.0\CECS475.Poker.Model.AssemblyInfo.cs
+C:\Users\bryts\Desktop\CECS 475 Projects\Homework1\CECS475.Poker.Model\obj\Debug\netstandard2.0\CECS475.Poker.Model.dll
+C:\Users\bryts\Desktop\CECS 475 Projects\Homework1\CECS475.Poker.Model\obj\Debug\netstandard2.0\CECS475.Poker.Model.pdb
+C:\Users\bryts\Desktop\CECS 475 Projects\Homework1\CECS475.Poker.Model\obj\Debug\netstandard2.0\CECS475.Poker.Model.csprojAssemblyReference.cache

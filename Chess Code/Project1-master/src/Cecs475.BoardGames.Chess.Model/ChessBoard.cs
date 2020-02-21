@@ -113,16 +113,104 @@ namespace Cecs475.BoardGames.Chess.Model {
             //BoardPosition has row and column
             //Need to use this to get an index in the byte array
             int indexNum = ((((position.Col - 1) * 4) + ((position.Row - 1) * 32)) / 4);
-            //Check if position is on left or right side of byte
-            if (position.Col % 2 == 1)
-            {
-                //if position is on the left side of the byte
-
-            }
+			//Check if position is on left or right side of byte
+			if (position.Col % 2 == 1)
+			{
+				//if position is on the left side of the byte
+				byte temp = BoardPosition[indexNum];
+				byte y = (byte)(temp >> 4);
+				string tempString = y.ToString();
+				int tempPlayer;
+				if (tempString[0] == '0')
+				{
+					tempPlayer = 1;
+				}
+				else
+				{
+					tempPlayer = 2;
+				}
+				if (tempString.Substring(1,3) == "000")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Empty, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1,3) == "001")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Pawn, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1, 3) == "010")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Rook, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1, 3) == "011")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Knight, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1, 3) == "100")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Bishop, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1, 3) == "101")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Queen, tempPlayer);
+					return tempPiece;
+				}
+					//King is only piece left possible
+					ChessPiece tempPiece2 = new ChessPiece(ChessPieceType.King, tempPlayer);
+					return tempPiece2;
+			}
             else
             {
-                //position is on right side of byte
-            }
+				//position is on right side of byte
+				byte temp = BoardPosition[indexNum];
+				string tempString = temp.ToString();
+				int tempPlayer;
+				if (tempString[0] == '0')
+				{
+					tempPlayer = 1;
+				}
+				else
+				{
+					tempPlayer = 2;
+				}
+				if (tempString.Substring(1, 3) == "000")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Empty, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1, 3) == "001")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Pawn, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1, 3) == "010")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Rook, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1, 3) == "011")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Knight, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1, 3) == "100")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Bishop, tempPlayer);
+					return tempPiece;
+				}
+				else if (tempString.Substring(1, 3) == "101")
+				{
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Queen, tempPlayer);
+					return tempPiece;
+				}
+				//King is the only piece left possible
+				ChessPiece tempPiece2 = new ChessPiece(ChessPieceType.King, tempPlayer);
+				return tempPiece2;
+			}
 		}
 
 		/// <summary>

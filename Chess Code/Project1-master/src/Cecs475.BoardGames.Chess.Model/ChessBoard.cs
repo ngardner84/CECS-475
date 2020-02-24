@@ -271,7 +271,92 @@ namespace Cecs475.BoardGames.Chess.Model {
 		/// Mutates the board state so that the given piece is at the given position.
 		/// </summary>
 		private void SetPieceAtPosition(BoardPosition position, ChessPiece piece) {
-			throw new NotImplementedException("You must implement this method.");
+			int indexNum = ((((position.Col - 1) * 4) + ((position.Row - 1) * 32)) / 4);
+			if (position.Col % 2 == 1)
+			{
+				//if position is on the left side of the byte
+				byte temp = BoardPosition[indexNum];
+				byte y = (byte)(temp >> 4);
+				string tempString = y.ToString();
+				string rightString = tempString.Substring(1, 3);
+				int tempPlayer;
+				if (tempString[0] == '0')
+				{
+					tempPlayer = 1;
+				}
+				else
+				{
+					tempPlayer = 2;
+				}
+				if (rightString == "000")
+				{
+					
+					//Create new byte and write to byte array
+				}
+				else if (rightString == "001")
+				{
+					//Create new byte and write to byte array
+				}
+				else if (rightString == "010")
+				{
+					//Create new byte and write to byte array
+				}
+				else if (rightString == "011")
+				{
+					//Create new byte and write to byte array
+				}
+				else if (rightString == "100")
+				{
+					//Create new byte and write to byte array
+				}
+				else if (rightString == "101")
+				{
+					//Create new byte and write to byte array
+				}
+				//King is only piece left possible
+				//Create new byte and write to byte array
+			}
+			else
+			{
+				//position is on right side of byte
+				byte temp = BoardPosition[indexNum];
+				string tempString = temp.ToString();
+				int tempPlayer;
+				if (tempString[0] == '0')
+				{
+					tempPlayer = 1;
+				}
+				else
+				{
+					tempPlayer = 2;
+				}
+				if (tempString.Substring(1, 3) == "000")
+				{
+					//Create new byte and write to byte array
+				}
+				else if (tempString.Substring(1, 3) == "001")
+				{
+					//Create new byte and write to byte array
+				}
+				else if (tempString.Substring(1, 3) == "010")
+				{
+					//Create new byte and write to byte array
+				}
+				else if (tempString.Substring(1, 3) == "011")
+				{
+					//Create new byte and write to byte array
+				}
+				else if (tempString.Substring(1, 3) == "100")
+				{
+					//Create new byte and write to byte array
+				}
+				else if (tempString.Substring(1, 3) == "101")
+				{
+					//Create new byte and write to byte array
+				}
+				//King is the only piece left possible
+				//Create new byte and write to byte array
+			}
 		}
 
 		#endregion

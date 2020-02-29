@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Test\\CECS475.Poker.Test.csproj": {}
+    "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Test\\CECS475.Poker.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj": {
+    "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj",
+        "projectUniqueName": "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj",
         "projectName": "CECS475.Poker.Model",
-        "projectPath": "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj",
+        "projectPath": "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj",
         "packagesPath": "C:\\Users\\bryts\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Model\\obj\\",
+        "outputPath": "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -58,18 +58,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Test\\CECS475.Poker.Test.csproj": {
+    "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Test\\CECS475.Poker.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Test\\CECS475.Poker.Test.csproj",
+        "projectUniqueName": "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Test\\CECS475.Poker.Test.csproj",
         "projectName": "CECS475.Poker.Test",
-        "projectPath": "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Test\\CECS475.Poker.Test.csproj",
+        "projectPath": "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Test\\CECS475.Poker.Test.csproj",
         "packagesPath": "C:\\Users\\bryts\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Test\\obj\\",
+        "outputPath": "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -88,8 +88,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj": {
-                "projectPath": "C:\\Users\\bryts\\Desktop\\CECS 475 Projects\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj"
+              "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj": {
+                "projectPath": "C:\\Users\\bryts\\Documents\\GitHub\\CECS-475\\Homework1\\CECS475.Poker.Model\\CECS475.Poker.Model.csproj"
               }
             }
           }
@@ -134,12 +134,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

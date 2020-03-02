@@ -11,15 +11,15 @@ using Cecs475.BoardGames.View;
 namespace Cecs475.BoardGames.ConsoleApp {
 	class Program {
 		public static void Main(string[] args) {
-			OthelloBoard b = new OthelloBoard();
-			b.MoveHistory;
+			ChessBoard b = new ChessBoard();
+			//b.MoveHistory;
 
 
 			IGameBoard board = null!;
 			IConsoleView view = null!;
 
 			// Use a game name from the command line, or default to chess.
-			string gameName = args.Length == 1 ? args[0] : "othello";
+			string gameName = args.Length == 1 ? args[0] : "chess";
 
 			switch (gameName) {
 				case "othello":

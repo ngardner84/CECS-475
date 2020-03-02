@@ -72,7 +72,7 @@ namespace Cecs475.BoardGames.Model {
 		/// game board, in row-major order.
 		/// </summary>
 		/// <param name="rows">the number of horizontal rows on the board</param>
-		/// <param name="cols">the number of vertical columns on the board</param>
+		/// <param name="cols">the number of vertical columns on the board</param> 
 		public static IEnumerable<BoardPosition> GetRectangularPositions(int rows, int cols) {
 			return Enumerable.Range(0, 8).SelectMany(
 				r => Enumerable.Range(0, 8),

@@ -149,9 +149,10 @@ namespace Cecs475.BoardGames.Chess.Model {
 				int y = (int)(temp2 << 4);
 				int x = ((int)(temp)) - y;
 				int tempPlayer;
-				if (x > 8)
+				if (x >= 8)
 				{
 					tempPlayer = 1;
+                    x = x - 8;
 				}
 				else
 				{
@@ -197,9 +198,10 @@ namespace Cecs475.BoardGames.Chess.Model {
 				byte temp = BoardPositions[indexNum];
 				int tempPlayer;
 				int x = (int)(temp >> 4);
-				if (x > 8)
+				if (x >= 8)
 				{
 					tempPlayer = 1;
+                    x = x - 8;
 				}
 				else
 				{

@@ -212,8 +212,8 @@ namespace Cecs475.BoardGames.Chess.Test {
 		// Check if the queens are in the correct positions (black at 0,4 and white at 7,4)
 		public void CheckInitialQueenPositions() {
 			ChessBoard b = new ChessBoard();
-			b.GetPieceAtPosition(Pos(0, 3)).PieceType.Should().Be(ChessPieceType.Queen, "Black queen should be at position (0, 5)");
-			b.GetPieceAtPosition(Pos(7, 3)).PieceType.Should().Be(ChessPieceType.Queen, "White queen should be at position (7, 5)");
+			b.GetPieceAtPosition(Pos(0, 3)).PieceType.Should().Be(ChessPieceType.Queen, "Black queen should be at position (0, 4)");
+			b.GetPieceAtPosition(Pos(7, 3)).PieceType.Should().Be(ChessPieceType.Queen, "White queen should be at position (7, 4)");
 		}
 
 

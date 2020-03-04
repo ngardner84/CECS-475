@@ -248,7 +248,15 @@ namespace Cecs475.BoardGames.Chess.Model {
 		/// Returns whatever player is occupying the given position.
 		/// </summary>
 		public int GetPlayerAtPosition(BoardPosition pos) {
-			return GetPieceAtPosition(pos).Player;
+            if (GetPieceAtPosition(pos).Player == 0 && GetPieceAtPosition(pos).PieceType != ChessPieceType.Empty)
+            {
+                return 1;
+            }
+            else if (GetPieceAtPosition(pos).Player == 1 && GetPieceAtPosition(pos).PieceType != ChessPieceType.Empty)
+            {
+                return 2;
+            }
+			return 0;
 		}
 
 		/// <summary>

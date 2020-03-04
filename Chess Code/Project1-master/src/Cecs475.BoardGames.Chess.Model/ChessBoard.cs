@@ -145,8 +145,8 @@ namespace Cecs475.BoardGames.Chess.Model {
 				//if position is on the right side of the byte
 				byte temp = BoardPositions[indexNum];
 				//use bitwise operations to subtract the left side to leave the right by itself
-				int y = (int)(temp >> 4);
-				y = y << 4;
+				var temp2 = temp >> 4;
+				int y = (int)(temp2 << 4);
 				int x = ((int)(temp)) - y;
 				int tempPlayer;
 				if (x > 8)
@@ -167,22 +167,22 @@ namespace Cecs475.BoardGames.Chess.Model {
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Pawn, tempPlayer);
 					return tempPiece;
 				}
-				else if (x == 10)
+				else if (x == 2)
 				{
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Rook, tempPlayer);
 					return tempPiece;
 				}
-				else if (x == 11)
+				else if (x == 3)
 				{
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Knight, tempPlayer);
 					return tempPiece;
 				}
-				else if (x == 100)
+				else if (x == 4)
 				{
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Bishop, tempPlayer);
 					return tempPiece;
 				}
-				else if (x == 101)
+				else if (x == 5)
 				{
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Queen, tempPlayer);
 					return tempPiece;
@@ -215,22 +215,22 @@ namespace Cecs475.BoardGames.Chess.Model {
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Pawn, tempPlayer);
 					return tempPiece;
 				}
-				else if (x == 10)
+				else if (x == 2)
 				{
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Rook, tempPlayer);
 					return tempPiece;
 				}
-				else if (x == 11)
+				else if (x == 3)
 				{
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Knight, tempPlayer);
 					return tempPiece;
 				}
-				else if (x == 100)
+				else if (x == 4)
 				{
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Bishop, tempPlayer);
 					return tempPiece;
 				}
-				else if (x == 101)
+				else if (x == 5)
 				{
 					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Queen, tempPlayer);
 					return tempPiece;

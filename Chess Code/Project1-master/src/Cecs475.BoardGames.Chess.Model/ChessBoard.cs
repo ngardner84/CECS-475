@@ -104,12 +104,13 @@ namespace Cecs475.BoardGames.Chess.Model {
 			{
 				for (int j = 0; j < 7; j++)
 				{
-					if (GetPieceAtPosition(new BoardPosition(i, j)).PieceType == ChessPieceType.Pawn)
+					BoardPosition tempPosition = new BoardPosition(i, j);
+					if (GetPieceAtPosition(tempPosition).PieceType == ChessPieceType.Pawn)
 					{
-						if (GetPlayerAtPosition(new BoardPosition(i, j)) == 1)
+						if (GetPlayerAtPosition(tempPosition) == 1)
 						{
 							//player 1
-
+							//tempPosition.Translate();
 						}
 						else
 						{

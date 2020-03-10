@@ -22,14 +22,14 @@ namespace Cecs475.BoardGames.Chess.Model {
         //starts from the left of every row
         //initial board state
         private byte[] BoardPositions = 
-                {0b_0010_0011, 0b_0100_0101, 0b_0110_0100, 0b_0011_0010,
-                0b_0001_0001, 0b_0001_0001, 0b_0001_0001, 0b_0001_0001,
-                0b_0000_0000, 0b_0000_0000, 0b_0000_0000, 0b_0000_0000,
-                0b_0000_0000, 0b_0000_0000, 0b_0000_0000, 0b_0000_0000,
-                0b_0000_0000, 0b_0000_0000, 0b_0000_0000, 0b_0000_0000,
-                0b_0000_0000, 0b_0000_0000, 0b_0000_0000, 0b_0000_0000,
+                {0b_1010_1011, 0b_1100_1101, 0b_1110_1100, 0b_1011_1010,
                 0b_1001_1001, 0b_1001_1001, 0b_1001_1001, 0b_1001_1001,
-                0b_1010_1011, 0b_1100_1101, 0b_1110_1100, 0b_1011_1010};
+                0b_0000_0000, 0b_0000_0000, 0b_0000_0000, 0b_0000_0000,
+                0b_0000_0000, 0b_0000_0000, 0b_0000_0000, 0b_0000_0000,
+                0b_0000_0000, 0b_0000_0000, 0b_0000_0000, 0b_0000_0000,
+                0b_0000_0000, 0b_0000_0000, 0b_0000_0000, 0b_0000_0000,
+                0b_0001_0001, 0b_0001_0001, 0b_0001_0001, 0b_0001_0001,
+                0b_0010_0011, 0b_0100_0101, 0b_0110_0100, 0b_0011_0010};
 
 
 
@@ -93,13 +93,17 @@ namespace Cecs475.BoardGames.Chess.Model {
 
 		#region Public methods.
 		public IEnumerable<ChessMove> GetPossibleMoves() {
-			throw new NotImplementedException("You must implement this method.");
+			List<ChessMove> possibleMoves = new List<ChessMove>();
+			possibleMoves = (List<ChessMove>)GetPawnMoves(1);
+			return possibleMoves;
 		}
 
 		public IEnumerable<ChessMove> GetPawnMoves(int player)
 		{
 			List<ChessMove> pawnMoves = new List<ChessMove>();
 			//Add en passant later
+			//Player 1 goes upward
+			//Player 2 goes downward
 			for (int i = 1; i < 7; i++)
 			{
 				for (int j = 0; j < 7; j++)
@@ -110,11 +114,22 @@ namespace Cecs475.BoardGames.Chess.Model {
 						if (GetPlayerAtPosition(tempPosition) == 1)
 						{
 							//player 1
+							if (tempPosition.Row == 2 && PositionIsEmpty(new BoardPosition(tempPosition.Col, 4)))
+							{
+								pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, 2)));
+							}
 							//tempPosition.Translate();
+							if (tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1). == PositionInBounds(tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1)))
+							{
+
+							}
+							pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, 1)));
+							tempPosition.Translate(0, 1);
 						}
 						else
 						{
 							//player 2
+							tempPosition.Translate(0, -1);
 						}
 					}
 				}
@@ -144,23 +159,22 @@ namespace Cecs475.BoardGames.Chess.Model {
 			{
 				//if position is on the right side of the byte
 				byte temp = BoardPositions[indexNum];
-				//use bitwise operations to subtract the left side to leave the right by itself
 				var temp2 = temp >> 4;
 				int y = (int)(temp2 << 4);
 				int x = ((int)(temp)) - y;
 				int tempPlayer;
 				if (x >= 8)
 				{
-					tempPlayer = 1;
+					tempPlayer = 2;
                     x = x - 8;
 				}
 				else
 				{
-					tempPlayer = 2;
+					tempPlayer = 1;
 				}
 				if (x == 0)
 				{
-					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Empty, tempPlayer);
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Empty, 0);
 					return tempPiece;
 				}
 				else if (x == 1)
@@ -200,16 +214,16 @@ namespace Cecs475.BoardGames.Chess.Model {
 				int x = (int)(temp >> 4);
 				if (x >= 8)
 				{
-					tempPlayer = 1;
+					tempPlayer = 2;
                     x = x - 8;
 				}
 				else
 				{
-					tempPlayer = 2;
+					tempPlayer = 1;
 				}
 				if (x == 0)
 				{
-					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Empty, tempPlayer);
+					ChessPiece tempPiece = new ChessPiece(ChessPieceType.Empty, 0);
 					return tempPiece;
 				}
 				else if (x == 1)
@@ -264,7 +278,11 @@ namespace Cecs475.BoardGames.Chess.Model {
 		/// </summary>
 		/// <remarks>returns false if the position is not in bounds</remarks>
 		public bool PositionIsEmpty(BoardPosition pos) {
-			if (GetPieceAtPosition(pos).PieceType == ChessPieceType.Empty)
+			if (PositionInBounds(pos) == false)
+			{
+				return false;
+			}
+			else if (GetPieceAtPosition(pos).PieceType == ChessPieceType.Empty)
 			{
 				return true;
 			}
@@ -287,11 +305,11 @@ namespace Cecs475.BoardGames.Chess.Model {
 		/// Returns true if the given position is in the bounds of the board.
 		/// </summary>
 		public static bool PositionInBounds(BoardPosition pos) {
-			if (pos.Col < 0 || pos.Col > 8)
+			if (pos.Col < 0 || pos.Col > 7)
 			{
 				return false;
 			}
-			if (pos.Row < 0 || pos.Col > 8)
+			if (pos.Row < 0 || pos.Col > 7)
 			{
 				return false;
 			}
@@ -337,126 +355,125 @@ namespace Cecs475.BoardGames.Chess.Model {
 		/// Mutates the board state so that the given piece is at the given position.
 		/// </summary>
 		private void SetPieceAtPosition(BoardPosition position, ChessPiece piece) {
-			int indexNum = (((((position.Col - 1) * 4) + ((position.Row - 1) * 32)) / 4) / 8);
+			int indexNum = (position.Row * 4) + (position.Col / 2);
 			if (position.Col % 2 == 1)
 			{
 				//if position is on the right side of the byte
 				byte temp = BoardPositions[indexNum];
-				byte y = (byte)temp;
-				string tempString = y.ToString();
-				string leftString = tempString.Substring(0, 4);
-				y = (byte)(temp << 4);
-				tempString = y.ToString();
-				string rightString = tempString.Substring(0, 3);
-				string tempPlayer;
-				string newByte;
+				var temp2 = temp >> 4;
+				int leftSide = (int)(temp2 << 4);
+				int rightSide = ((int)(temp)) - leftSide;
+				int tempPlayer;
 				byte tempByte;
-				if (tempString[0] == '0')
+				int newByte;
+				if (rightSide >= 8)
 				{
-					tempPlayer = "0";
+					tempPlayer = 8;
 				}
 				else
 				{
-					tempPlayer = "1";
+					tempPlayer = 0;
 				}
 				if (piece.PieceType == ChessPieceType.Empty)
 				{
-					newByte = leftString + "_" + tempPlayer + "000";
-					tempByte = Convert.ToByte(newByte, 2);
+					//take int of left side and add to right, then convert to binary
+					newByte = leftSide + tempPlayer + 0;
+					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 					//Create new byte and write to byte array
 				}
 				else if (piece.PieceType == ChessPieceType.Pawn)
 				{
-					newByte = leftString + "_" + tempPlayer + "001";
+					newByte = leftSide + tempPlayer + 1;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
 				else if (piece.PieceType == ChessPieceType.Rook)
 				{
-					newByte = leftString + "_" + tempPlayer + "010";
+					newByte = leftSide + tempPlayer + 2;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
 				else if (piece.PieceType == ChessPieceType.Knight)
 				{
-					newByte = leftString + "_" + tempPlayer + "011";
+					newByte = leftSide + tempPlayer + 3;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
 				else if (piece.PieceType == ChessPieceType.Bishop)
 				{
-					newByte = leftString + "_" + tempPlayer + "100";
+					newByte = leftSide + tempPlayer + 4;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
 				else if (piece.PieceType == ChessPieceType.Queen)
 				{
-					newByte = leftString + "_" + tempPlayer + "101";
+					newByte = leftSide + tempPlayer + 5;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
 				//King is only piece left possible
-				newByte = leftString + "_" + tempPlayer + "110";
+				newByte = leftSide + tempPlayer + 6;
 				tempByte = Convert.ToByte(newByte);
 				BoardPositions[indexNum] = tempByte;
 			}
 			else
 			{
-				//position is on right side of byte
+				//position is on left side of byte
 				byte temp = BoardPositions[indexNum];
-				string tempString = temp.ToString();
-				string tempPlayer;
-				string rightString = tempString.Substring(4, 4);
-				string newByte;
+				var temp2 = temp >> 4;
+				int leftSide = (int)(temp2 << 4);
+				int rightSide = ((int)(temp)) - leftSide;
+				int tempPlayer;
 				byte tempByte;
-				if (tempString[0] == '0')
+				int newByte;
+				if (temp2 >= 8)
 				{
-					tempPlayer = "0";
+					tempPlayer = 8;
 				}
 				else
 				{
-					tempPlayer = "1";
+					tempPlayer = 0;
 				}
 				if (piece.PieceType == ChessPieceType.Empty)
 				{
-					newByte = tempPlayer + "000" + rightString;
+					newByte = leftSide + tempPlayer + 0;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 					//Create new byte and write to byte array
 				}
-				else if (tempString.Substring(1, 3) == "001")
+				else if (piece.PieceType == ChessPieceType.Pawn)
 				{
-					newByte = tempPlayer + "001" + rightString;
+					newByte = leftSide + tempPlayer + 1;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
-				else if (tempString.Substring(1, 3) == "010")
+				else if (piece.PieceType == ChessPieceType.Rook)
 				{
-					newByte = tempPlayer + "010" + rightString;
+					newByte = leftSide + tempPlayer + 2;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
-				else if (tempString.Substring(1, 3) == "011")
+				else if (piece.PieceType == ChessPieceType.Knight)
 				{
-					newByte = tempPlayer + "011" + rightString;
+					newByte = leftSide + tempPlayer + 3;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
-				else if (tempString.Substring(1, 3) == "100")
+				else if (piece.PieceType == ChessPieceType.Bishop)
 				{
-					newByte = tempPlayer + "100" + rightString;
+					newByte = leftSide + tempPlayer + 4;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
-				else if (tempString.Substring(1, 3) == "101")
+				else if (piece.PieceType == ChessPieceType.Queen)
 				{
-					newByte = tempPlayer + "101" + rightString;
+					newByte = leftSide + tempPlayer + 5;
 					tempByte = Convert.ToByte(newByte);
 					BoardPositions[indexNum] = tempByte;
 				}
 				//King is the only piece left possible
-				newByte = tempPlayer + "110" + rightString;
+				newByte = leftSide + tempPlayer + 6;
 				tempByte = Convert.ToByte(newByte);
 				BoardPositions[indexNum] = tempByte;
 			}

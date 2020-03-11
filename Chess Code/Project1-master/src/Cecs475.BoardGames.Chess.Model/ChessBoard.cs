@@ -114,12 +114,11 @@ namespace Cecs475.BoardGames.Chess.Model {
 						if (GetPlayerAtPosition(tempPosition) == 1)
 						{
 							//player 1
-							if (tempPosition.Row == 2 && PositionIsEmpty(new BoardPosition(tempPosition.Col, 4)))
+							if (tempPosition.Row == 2 && PositionIsEmpty(new BoardPosition(tempPosition.Col, 4)) && PositionIsEmpty(new BoardPosition(tempPosition.Col, 3)))
 							{
 								pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, 2)));
 							}
-							//tempPosition.Translate();
-							if (tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1). == PositionInBounds(tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1)))
+							if (GetPieceAtPosition(tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1)).PieceType == ChessPieceType.Empty && PositionInBounds(tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1)))
 							{
 
 							}

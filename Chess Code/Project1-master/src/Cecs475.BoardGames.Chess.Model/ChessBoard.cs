@@ -94,11 +94,11 @@ namespace Cecs475.BoardGames.Chess.Model {
 		#region Public methods.
 		public IEnumerable<ChessMove> GetPossibleMoves() {
 			List<ChessMove> possibleMoves = new List<ChessMove>();
-			possibleMoves = (List<ChessMove>)GetPawnMoves(1);
+			possibleMoves = (List<ChessMove>)GetPawnMoves();
 			return possibleMoves;
 		}
 
-		public IEnumerable<ChessMove> GetPawnMoves(int player)
+		public IEnumerable<ChessMove> GetPawnMoves()
 		{
 			List<ChessMove> pawnMoves = new List<ChessMove>();
 			//Add en passant later
@@ -111,24 +111,45 @@ namespace Cecs475.BoardGames.Chess.Model {
 					BoardPosition tempPosition = new BoardPosition(i, j);
 					if (GetPieceAtPosition(tempPosition).PieceType == ChessPieceType.Pawn)
 					{
-						if (GetPlayerAtPosition(tempPosition) == 1)
+						if (GetPlayerAtPosition(tempPosition) == 1 && PositionInBounds(tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1)))
 						{
-							//player 1
+						//player 1
+						//check if pawn can move forward 2 spaces
 							if (tempPosition.Row == 2 && PositionIsEmpty(new BoardPosition(tempPosition.Col, 4)) && PositionIsEmpty(new BoardPosition(tempPosition.Col, 3)))
 							{
 								pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, 2)));
 							}
-							if (GetPieceAtPosition(tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1)).PieceType == ChessPieceType.Empty && PositionInBounds(tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1)))
+							//check if position in front of the pawn is in bounds and empty
+							if (GetPieceAtPosition(tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1)).PieceType == ChessPieceType.Empty && tempPosition.Row == 7)
 							{
-
+								pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, 1)));
 							}
-							pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, 1)));
-							tempPosition.Translate(0, 1);
+							//check if pawn is ready for pawn promotion
+							if (GetPieceAtPosition(tempPosition.Translate(tempPosition.Col, tempPosition.Row + 1)).PieceType == ChessPieceType.Empty && tempPosition.Row == 7)
+							{
+								pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, 1), ChessMoveType.PawnPromote));
+							}
 						}
 						else
 						{
 							//player 2
-							tempPosition.Translate(0, -1);
+							if (PositionInBounds(tempPosition.Translate(tempPosition.Col, tempPosition.Row - 1)))
+							{
+								if (tempPosition.Row == 7 && PositionIsEmpty(new BoardPosition(tempPosition.Col, 5)) && PositionIsEmpty(new BoardPosition(tempPosition.Col, 6)))
+								{
+									pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, -2)));
+								}
+								//check if position in front of the pawn is in bounds and empty
+								if (GetPieceAtPosition(tempPosition.Translate(tempPosition.Col, tempPosition.Row - 1)).PieceType == ChessPieceType.Empty && tempPosition.Row == 2)
+								{
+									pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, -1)));
+								}
+								//check if pawn is ready for pawn promotion
+								if (GetPieceAtPosition(tempPosition.Translate(tempPosition.Col, tempPosition.Row - 1)).PieceType == ChessPieceType.Empty && tempPosition.Row == 2)
+								{
+									pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, -1), ChessMoveType.PawnPromote));
+								}
+							}
 						}
 					}
 				}
@@ -137,9 +158,10 @@ namespace Cecs475.BoardGames.Chess.Model {
 		}
 
 		public void ApplyMove(ChessMove m) {
-			// STRONG RECOMMENDATION: any mutation to the board state should be run
-			// through the method SetPieceAtPosition.
-			throw new NotImplementedException("You must implement this method.");
+			ChessPiece tempPiece = GetPieceAtPosition(m.StartPosition);
+			SetPieceAtPosition(m.EndPosition, tempPiece);
+			//Add to list of moves made later
+			//NEEDS TO BE DONE SOON
 		}
 
 		public void UndoLastMove() {

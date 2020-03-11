@@ -24,7 +24,9 @@ namespace Cecs475.BoardGames.Chess.Model {
 		/// </summary>
 		public ChessMoveType MoveType { get; }
 
-		// You must set this property when applying a move.
+        // You must set this property when applying a move.
+        public ChessPieceType PawnPieceType { get; }
+
 		public int Player { get; set; }
 
 		/// <summary>
@@ -39,11 +41,27 @@ namespace Cecs475.BoardGames.Chess.Model {
 			MoveType = moveType;
 		}
 
+        public ChessMove(BoardPosition start, BoardPosition end, ChessPieceType newPieceType, ChessMoveType moveType = ChessMoveType.PawnPromote)
+        {
+            StartPosition = start;
+            EndPosition = end;
+            MoveType = moveType;
+            PawnPieceType = newPieceType;
+        }
+
 		// TODO: You must write this method.
 		public virtual bool Equals(ChessMove other) {
 			// Most chess moves are equal to each other if they have the same start and end position.
 			// PawnPromote moves must also be promoting to the same piece type.
-			throw new NotImplementedException("You are responsible for implementing this method.");
+			if (this.StartPosition == other.StartPosition && this.EndPosition == other.EndPosition)
+            {
+                return true;
+            }
+            if (this.MoveType == ChessMoveType.PawnPromote && other.MoveType == ChessMoveType.PawnPromote && this.StartPosition == other.StartPosition && this.EndPosition == other.EndPosition)
+            {
+                return true;
+            }
+            return false;
 		}
 
 

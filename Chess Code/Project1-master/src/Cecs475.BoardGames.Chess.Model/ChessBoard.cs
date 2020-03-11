@@ -56,9 +56,9 @@ namespace Cecs475.BoardGames.Chess.Model {
 		// You can add set bodies if you think that is appropriate, as long as you justify
 		// the access level (public, private).
 
-		public bool IsFinished { get { throw new NotImplementedException("You must implement this property."); } }
+		public bool IsFinished { get { if (IsCheckmate == true) { return true; } return false; } }
 
-		public int CurrentPlayer { get { throw new NotImplementedException("You must implement this property."); } }
+		public int CurrentPlayer { get { if (mMoveHistory.Count() % 2 == 0) { return 1; } return 2; } }
 
 		public GameAdvantage CurrentAdvantage { get { throw new NotImplementedException("You must implement this property."); } }
 
@@ -104,7 +104,7 @@ namespace Cecs475.BoardGames.Chess.Model {
 			//Add en passant later
 			//Player 1 goes upward
 			//Player 2 goes downward
-			for (int i = 1; i < 7; i++)
+			for (int i = 0; i < 7; i++)
 			{
 				for (int j = 0; j < 7; j++)
 				{
@@ -160,6 +160,7 @@ namespace Cecs475.BoardGames.Chess.Model {
 		public void ApplyMove(ChessMove m) {
 			ChessPiece tempPiece = GetPieceAtPosition(m.StartPosition);
 			SetPieceAtPosition(m.EndPosition, tempPiece);
+            mMoveHistory.Append<ChessMove>(m);
 			//Add to list of moves made later
 			//NEEDS TO BE DONE SOON
 		}

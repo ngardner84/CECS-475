@@ -43,20 +43,73 @@ namespace Cecs475.BoardGames.Chess.View {
 		/// "(a7, a8, Queen)".
 		/// </summary>
 		public string MoveToString(ChessMove move) {
-			throw new NotImplementedException("You are responsible for implementing this method.");
+            string moveString;
+            string column1 = move.StartPosition.Col.ToString();
+            int rowAscii = move.StartPosition.Row + 97;
+            char rowChar = (char)rowAscii;
+            string startMove = rowChar + column1;
+            string column2 = move.EndPosition.Col.ToString();
+            int rowAscii2 = move.EndPosition.Row + 97;
+            char rowChar2 = (char)rowAscii2;
+            string endMove = rowChar2 + column2;
+            if (move.MoveType == ChessMoveType.PawnPromote)
+            {
+                moveString = startMove + ", " + endMove + ", Queen";
+            }
+            moveString = startMove + ", " + endMove;
+            return moveString;
 		}
 
 		public string PlayerToString(int player) {
 			return player == 1 ? "White" : "Black";
 		}
 
-		/// <summary>
-		/// Converts a string representation of a move into a ChessMove object.
-		/// Must work with any string representation created by MoveToString.
-		/// </summary>
-		public ChessMove ParseMove(string moveText) {
-			throw new NotImplementedException("You are responsible for implementing this method.");
-		}
+        /// <summary>
+        /// Converts a string representation of a move into a ChessMove object.
+        /// Must work with any string representation created by MoveToString.
+        /// </summary>
+        public ChessMove ParseMove(string moveText) {
+            string[] moveParams = moveText.Split(", ");
+            char[] move1;
+            char row1;
+            int col;
+            BoardPosition pos1;
+            char[] move2;
+            char row2;
+            int col2;
+            BoardPosition pos2;
+            ChessMove returnMove;
+            if (moveParams.Length < 3)
+            {
+                move1 = moveParams[0].ToCharArray();
+                row1 = move1[0];
+                col = (int)move1[1] - 97;
+                pos1 = new BoardPosition(row1, col);
+
+                move2 = moveParams[1].ToCharArray();
+                row2 = move2[0];
+                col2 = (int)move2[1] - 97;
+                pos2 = new BoardPosition(row2, col2);
+
+                returnMove = new ChessMove(pos1, pos2);
+                return returnMove;
+            }
+            move1 = moveParams[0].ToCharArray();
+            row1 = move1[0];
+            col = (int)move1[1] - 97;
+            pos1 = new BoardPosition(row1, col);
+
+            move2 = moveParams[1].ToCharArray();
+            row2 = move2[0];
+            col2 = (int)move2[1] - 97;
+            pos2 = new BoardPosition(row2, col2);
+            int pieceType;
+            if (moveParams[2] == "Rook") { pieceType = 2; } if (moveParams[2] == "Knight") { pieceType = 3; } if (moveParams[2] == "Bishop") { pieceType = 4; } if (moveParams[2] == "Queen") { pieceType = 4; }
+            
+
+            returnMove = new ChessMove(pos1, pos2, ChessMoveType.PawnPromote);
+            return returnMove;
+        }
 
 		public static BoardPosition ParsePosition(string pos) {
 			return new BoardPosition(8 - (pos[1] - '0'), pos[0] - 'a');

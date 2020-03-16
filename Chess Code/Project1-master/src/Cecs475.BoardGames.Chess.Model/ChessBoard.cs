@@ -40,7 +40,7 @@ namespace Cecs475.BoardGames.Chess.Model {
 
 
         // TODO: add a field for tracking the current player and the board advantage.		
-        int PlayerNumber = 1;
+        private int PlayerNumber = 1;
 
         int BoardAdvantage = 0;
 
@@ -144,6 +144,9 @@ namespace Cecs475.BoardGames.Chess.Model {
 								{
 									pawnMoves.Append<ChessMove>(new ChessMove(tempPosition, tempPosition.Translate(0, -1)));
 								}
+								else
+								{
+								}
 								//check if pawn is ready for pawn promotion
 								if (GetPieceAtPosition(tempPosition.Translate(tempPosition.Col, tempPosition.Row - 1)).PieceType == ChessPieceType.Empty && tempPosition.Row == 2)
 								{
@@ -161,6 +164,8 @@ namespace Cecs475.BoardGames.Chess.Model {
 			ChessPiece tempPiece = GetPieceAtPosition(m.StartPosition);
 			SetPieceAtPosition(m.EndPosition, tempPiece);
             mMoveHistory.Append<ChessMove>(m);
+			if (CurrentPlayer != 1) { CurrentPlayer = 1; }
+			else { CurrentPlayer = 2; }
 			//Add to list of moves made later
 			//NEEDS TO BE DONE SOON
 		}
@@ -331,7 +336,7 @@ namespace Cecs475.BoardGames.Chess.Model {
 			{
 				return false;
 			}
-			if (pos.Row < 0 || pos.Col > 7)
+			if (pos.Row < 0 || pos.Row > 7)
 			{
 				return false;
 			}

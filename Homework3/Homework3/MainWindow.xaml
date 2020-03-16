@@ -1,0 +1,41 @@
+﻿<Window x:Class="Homework3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Homework3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="741.751" SizeChanged="WindowSizeChanged">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="187*"/>
+            <ColumnDefinition Width="180*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Margin="0,56,0,0" VerticalAlignment="Stretch" Width="88" Background="Yellow">
+            <RadioButton Content="Option 1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Option 2" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Option 3" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Option 4" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Label Content="This is an atrocious user interface!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="197"/>
+        <Button x:Name="mybutton" Content="Maximize!" HorizontalAlignment="Left" Margin="202,3,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.489,-0.251" Click="Button_Click">
+        </Button>
+        <Grid HorizontalAlignment="Stretch" Height="30" Margin="0,26,0,0" VerticalAlignment="Top" Background="Aqua" Grid.ColumnSpan="2">
+            <Label Content="This is centered!" HorizontalAlignment="Stretch" Margin="317,0,318,0" VerticalAlignment="Top" Height="30" Width="99" Background="LawnGreen"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="311" Margin="93,61,0,0" VerticalAlignment="Top" Width="641" Grid.ColumnSpan="2" x:Name="NameGrid">
+            <Label Content="Name: " HorizontalAlignment="Left" VerticalAlignment="Top" Width="112" Height="32"/>
+            <Label Content="Age: " HorizontalAlignment="Left" Margin="0,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.154,1.232" Width="112" Height="35"/>
+            <Label Content="Favorite cereal: " HorizontalAlignment="Left" Margin="0,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.297,1.802" Height="34" Width="112"/>
+            <TextBox x:Name="text"  HorizontalAlignment="Left" Height="37" Margin="112,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Width="529"/>
+            <ComboBox x:Name="combo" HorizontalAlignment="Left" Margin="112,37,0,0" VerticalAlignment="Top" Height="30" Width="529"/>
+            <RadioButton Content="Cheerios" HorizontalAlignment="Left" Margin="112,72,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Lucky Charms" HorizontalAlignment="Left" Margin="309,72,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Kix" HorizontalAlignment="Left" Margin="270,72,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+            <RadioButton Content="Wheat Chex" HorizontalAlignment="Left" Margin="182,72,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid HorizontalAlignment="Stretch" Height="42" Margin="88,0,0,0" VerticalAlignment="Bottom" Background="Red" Grid.ColumnSpan="2">
+            <Label Content="Hello" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+</Window>
